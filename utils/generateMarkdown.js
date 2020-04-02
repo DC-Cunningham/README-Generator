@@ -1,12 +1,20 @@
-const api = require("./api");
-
-function generateMarkdown(answers) {
+function generateMarkdown({
+  name,
+  projectName,
+  projectDescription,
+  usage,
+  contributorUsernames,
+  userURL,
+  userAvatar
+}) {
   return `
-  ### ${answers.name}
-  ## ${answers.projectName}
-  # ${answers.projectDescription}
-  # ${answers.usage}
-  ${answers.contributorUsernames}
+  ### ${name}
+  ## ${projectName}
+  # ${projectDescription}
+  # ${usage}
+  ${contributorUsernames}
+  ${userURL}
+  ${userAvatar}
     `;
 }
 

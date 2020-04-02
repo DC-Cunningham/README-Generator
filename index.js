@@ -41,16 +41,17 @@ function askUser() {
   ]);
 }
 
-askUser()
-  .then(function(answers) {
-    api.getUser(answers.name);
-    console.log(api.response);
+const init = async () => {
+  try {
+    const answers = await askUser();
+    const data = await api(answers.name);
+    answers.userURL = data.html_url;
+    answers.userAvatar = data.avatar_url;
     const readme = generateMarkdown(answers);
-    return writeFileAsync("README.md", readme);
-  })
-  .then(function() {
-    console.log("Successfully created README.md");
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
+    await writeFileAsync("README.md", readme);
+  } catch (e) {
+    console.log("Error: ", e);
+  }
+};
+
+init();
