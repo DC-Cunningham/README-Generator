@@ -1,6 +1,8 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
+const api = require("./utils/api");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -23,7 +25,7 @@ function askUser() {
     },
     {
       type: "input",
-      message: "What is the uage of the project?:",
+      message: "What is the usage of the project?:",
       name: "usage"
     },
     {
@@ -38,20 +40,12 @@ function askUser() {
     }
   ]);
 }
-function buildREADME(answers) {
-  return `
-  ${answers.name}
-  ${answers.projectName}
-  ${answers.projectDescription}
-  ${answers.usage}
-  ${answers.contributorUsernames}
-    `;
-}
 
 askUser()
   .then(function(answers) {
-    const readme = buildREADME(answers);
-
+    api.getUser(answers.name);
+    console.log(api.response);
+    const readme = generateMarkdown(answers);
     return writeFileAsync("README.md", readme);
   })
   .then(function() {
