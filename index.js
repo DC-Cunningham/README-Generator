@@ -30,12 +30,8 @@ function askUser() {
     },
     {
       type: "input",
-      message: "Where there any other contributors? (y/n):",
-      name: "contributors"
-    },
-    {
-      type: "input",
-      message: "Who was a contributor? (separate multiple usernames with ,):",
+      message:
+        "Were there any other contributors? (separate multiple usernames with ,):",
       name: "contributorUsernames"
     }
   ]);
@@ -47,6 +43,9 @@ const init = async () => {
     const data = await api(answers.name);
     answers.userURL = data.html_url;
     answers.userAvatar = data.avatar_url;
+    answers.userEmail = data.email;
+    answers.contributors = answers.contributorUsernames.split(",");
+    answers.contributorCount = answers.contributors.length;
     const readme = generateMarkdown(answers);
     await writeFileAsync("README.md", readme);
   } catch (e) {
