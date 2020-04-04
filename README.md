@@ -31,7 +31,8 @@ This application allows for the creation of a README in a templatre that allows 
 
 ## Authors and Acknowledgment
 
-###Main Author
+### Main Author
+
 [DCRevResLabs](https://github.com/DCRevResLabs)
 
 ![Author Avatar](https://avatars0.githubusercontent.com/u/47209814?v=4&s=100)
