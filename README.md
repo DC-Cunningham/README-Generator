@@ -16,7 +16,14 @@ This project is allows a user to create a README.md from a their input in a comm
 
 ## Installation
 
+After installing the dependencies of:
+"axios": "^0.19.0",
+"dotenv": "^8.0.0",
+"gh-badges": "^2.2.1",
+"inquirer": "^6.3.1"
 by running node index.js the user is prompted for the required information on their README to be created.
+
+![Run of command line](./Assets/Images/ScreenRecordingTerminal.gif)
 
 ## Usage
 
