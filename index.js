@@ -11,29 +11,29 @@ function askUser() {
     {
       type: "input",
       message: "What is GitHub Username?:",
-      name: "name"
+      name: "name",
     },
     {
       type: "input",
       message: "What is the name of your Project?:",
-      name: "projectName"
+      name: "projectName",
     },
     {
       type: "input",
       message: "Describe your Project?:",
-      name: "projectDescription"
+      name: "projectDescription",
     },
     {
       type: "input",
       message: "What is the usage of the project?:",
-      name: "usage"
+      name: "usage",
     },
     {
       type: "input",
       message:
         "Were there any other contributors? (separate multiple usernames with ,):",
-      name: "contributorUsernames"
-    }
+      name: "contributorUsernames",
+    },
   ]);
 }
 
@@ -47,7 +47,8 @@ const init = async () => {
     answers.contributors = answers.contributorUsernames.split(",");
     answers.contributorCount = answers.contributors.length;
     const readme = generateMarkdown(answers);
-    await writeFileAsync("README.md", readme);
+    await writeFileAsync("READMEMock.md", readme);
+    console.log("Congratulations a README.md file has been created for you!");
   } catch (e) {
     console.log("Error: ", e);
   }
